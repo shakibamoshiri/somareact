@@ -1,0 +1,9 @@
+
+$max_tab_x: 9;
+
+@for $index from 0 through $max_tab_x {
+    $plusOne: $index+1;
+
+    .translate-x-#{$index} { transform: translateX(-#{$index*100%}); }
+    .translate-rx-#{$index} { transform: translateX(#{$index*100%}); }
+} // end of @for loop

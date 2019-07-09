@@ -1,0 +1,44 @@
+
+$tab_x_transition_time: 1000;
+
+.tab-x{
+    display: flex;
+    flex-flow:  column nowrap;
+    height: 100%;
+    position: relative;
+    overflow: hidden;
+
+    input {
+        display: none;
+    }
+}
+
+.tab-x > .tab-x-container {
+    flex: 1 1 auto;
+}
+
+.tab-x-indicator {
+    display: flex;
+    flex-flow: row nowrap;
+    z-index: 2;
+    text-align: center;
+    > label {
+        flex: 1 1 0;
+        cursor: pointer;
+        transition: background-color #{$tab_x_transition_time/4}ms ease 50ms;
+    }
+}
+.tab-x-container {
+    display: flex;
+    overflow: hidden;
+
+    flex-flow: row nowrap;
+    .tab-x-item {
+        flex: 1 1 auto;
+        width: 100%;
+        min-width: 100%;
+        position: relative;
+        left: 0;
+        transition: transform #{$tab_x_transition_time}ms ease 50ms;
+    }
+}

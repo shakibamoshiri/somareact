@@ -1,0 +1,43 @@
+{
+    "name": "somareact",
+    "version": "1.0.0",
+    "author": {
+        "name": "Shakiba Moshiri",
+        "email": "hi@shakiba.it"
+    },
+    "description": "React Implementation of SomaCSS",
+    "main": "./build/js/somareact.js",
+    "license": "MIT",
+    "scripts": {
+        "js.build": "webpack",
+        "css.build": "sass  src/css/somareact.scss build/css/somareact.css",
+        "css.build.min": "sass --style compressed src/css/somareact.scss build/css/somareact.min.css",
+        "css.prefix": "./node_modules/.bin/postcss build/css/somareact.css --use=autoprefixer --map --no-map --output build/css/somareact.prefixed.css",
+        "css.prefix.min": "minify build/css/somareact.prefixed.css > build/css/somareact.prefixed.min.css"
+    },
+    "devDependencies": {
+        "@babel/core": "^7.4.0",
+        "@babel/preset-env": "^7.4.2",
+        "@babel/preset-react": "^7.0.0",
+        "autoprefixer": "^9.5.1",
+        "babel-loader": "^8.0.5",
+        "enzyme": "^3.9.0",
+        "enzyme-adapter-react-16": "^1.12.1",
+        "eslint": "^5.16.0",
+        "eslint-plugin-react": "^7.12.4",
+        "postcss-cli": "^6.1.2",
+        "react-addons-test-utils": "^15.6.2",
+        "react-test-renderer": "^16.8.6",
+        "webpack": "^4.29.6",
+        "webpack-cli": "^3.3.0",
+        "webpack-dev-server": "^3.2.1"
+    },
+    "preDependencies": {
+        "react-dom": "^16.8.6",
+        "react": "^16.8.6"
+    },
+    "dependencies": {
+        "react-dom": "^16.8.6",
+        "react": "^16.8.6"
+    }
+}

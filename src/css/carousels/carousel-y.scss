@@ -1,0 +1,191 @@
+
+$carousel_y_transition_time: 1000;
+.carousel-y {
+    height: 100%;
+    display: flex;
+    flex-flow: column nowrap;
+    overflow: hidden;
+    position: relative;
+}
+
+.carousel-y-item {
+    height: 100%;
+    min-height: 100%;
+    display: block;
+    position: relative;
+    transition: transform #{$carousel_y_transition_time}ms ease 50ms;
+}
+
+// centralize the.carousel-y-indicators vertically using flex
+// it is possible without flex but we have to calc() anytime we add a new indicator
+.carousel-y-indicator {
+    position: absolute;
+    z-index: 3;
+    margin: auto 0;
+    left: 5%;
+    top: 0;
+    bottom: 0;
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: center;
+
+    label {
+        background-color: #FFF;
+        transition: background-color 200ms ease 50ms;
+        width: 15px;
+        height: 15px;
+        cursor: pointer;
+        margin: 10px 0;
+        box-sizing: border-box;
+    }
+
+    label:not(.active).hover:hover {
+        background-color: #CCC;
+    }
+
+    label.title::after {
+        content: attr(data-title);
+        height: 1em;
+        position: absolute;
+        left: 3ch;
+        color: #FFF;
+        white-space: nowrap;
+    }
+
+    label.user-guide::before {
+        content: attr(data-user-guide);
+        white-space: nowrap;
+        position: absolute;
+        color: #000;
+        // NOTE: These can be (and should be) overridden in user-override.scss file
+        // background-color: #fe0;
+        // padding: 0 2px;
+        // border-radius: 3px;
+        opacity: 0;
+        visibility: hidden;
+        left: -50px;
+        overflow: hidden;
+        max-width: 4ch;
+
+    }
+    label.active {
+        border: 2px #FFF solid;
+        width: 17px;
+        height: 17px;
+        cursor: default;
+        background-color: #000;
+        &::before,
+        &::after {
+            color: #000;
+            opacity: 1;
+            visibility: visible;
+        }
+    }
+}
+
+
+/* arrows */
+.carousel-y-arrow {
+    display: flex;
+    flex-flow: column nowrap;
+    position: absolute;
+    width: 50px;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    margin: auto;
+}
+.carousel-y-arrow.right {
+    left: auto;
+    right: 0;
+}
+.carousel-y-arrow.left {
+    right: auto;
+    left: 0;
+}
+.carousel-y-arrow.top {
+    top: 0;
+    bottom: auto;
+}
+.carousel-y-arrow.bottom {
+    top: auto;
+    bottom: 0;
+}
+.carousel-y-arrow.center {
+    height: 150px;
+    top: 0;
+    bottom: 0;
+}
+.carousel-y-arrow div label {
+    /* display: none; */
+    width: 46px;
+    height: 46px;
+    border: 1px #FFF solid;
+    position: absolute;
+    left:  0;
+    right: 0;
+    bottom: 0;
+    top:  0;
+    z-index: 2;
+    cursor: pointer;
+}
+
+.carousel-y-arrow .carousel-y-arrow-top label::before,
+.carousel-y-arrow .carousel-y-arrow-bottom label::after {
+    content: "";
+    display: block;
+    width: 0;
+    height: 0;
+    position: relative;
+    border-width: 16px;
+    left: 8px;
+    border-style: solid;
+    opacity: 0.2;
+    transition: opacity 200ms ease 50ms;
+}
+.carousel-y-arrow div label:hover::after,
+.carousel-y-arrow div label:hover::before {
+    opacity: 1;
+}
+
+.carousel-y-arrow .carousel-y-arrow-top label::before {
+    top: 0;
+    border-color:  transparent transparent #FFF transparent ;
+}
+.carousel-y-arrow .carousel-y-arrow-bottom label::after {
+    top: 16px;
+    border-color: #FFF transparent transparent transparent;
+}
+
+.carousel-y-arrow-top,
+.carousel-y-arrow-bottom {
+    height: 50px;
+    width: 50px;
+    position: relative;
+}
+
+.carousel-y-arrow-space {
+    flex: 1 1 auto;
+}
+
+.carousel-y.compact-arrow {
+
+    .carousel-y-arrow label {
+        border: 0;
+    }
+    .carousel-y-arrow label::after,
+    .carousel-y-arrow label::before {
+        opacity: 0.5;
+    }
+    .carousel-y-arrow label:hover::after,
+    .carousel-y-arrow label:hover::before {
+        opacity: 1;
+    }
+
+    .carousel-y-arrow-space {
+        flex: none;
+        width: 50px;
+        height: 50px;
+    }
+}

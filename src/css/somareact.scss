@@ -1,0 +1,21 @@
+/*
+	SomaCSS for React
+	Author: Shakiba Moshiri
+*/
+
+@import "override/common-rule";
+
+@import "carousels/carousel-x";
+@import "carousels/carousel-y";
+@import "carousels/carousel-z";
+
+@import "tabs/tab-x";
+@import "tabs/tab-y";
+
+@import "slicks/slick-x";
+@import "slicks/slick-z";
+
+@import "helper/translate-x";
+@import "helper/translate-y";
+
+@import "override/user-override";
